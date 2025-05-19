@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Green Event - Osez la fraîcheur !</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Breathing&family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --vert-imperial: #0E3B2F;
+      --or-royal: #D4AF37;
+      --blanc-pur:rgb(188, 209, 196);
+      --gris-anthracite: #2E2E2E;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--blanc-pur);
+      color: #1B1B1B;
+      scroll-behavior: smooth;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+    }
+
+    .navbar {
+      background-color: var(--vert-imperial);
+    }
+
+    .navbar-brand span:first-child {
+      color: var(--vert-imperial);
+      background-color: var(--or-royal);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .navbar-brand span:last-child {
+      color: var(--or-royal);
+    }
+
+    .nav-link {
+      color: var(--blanc-pur) !important;
+      font-weight: 500;
+    }
+
+    .hero {
+      height: 70vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://thumbs.dreamstime.com/b/set-various-cocktails-black-background-set-various-cocktails-shaker-black-background-188649840.jpg?w=768') no-repeat center center/cover;
+      filter: brightness(0.4) blur(3px);
+      z-index: -1;
+    }
+
+    .hero h1,
+    .hero p,
+    .hero .slogan {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin: 0.5rem 0;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+    }
+
+    .slogan {
+      font-family: 'Breathing', cursive;
+      font-size: 1.5rem;
+      color: var(--or-royal);
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .section-title {
+      color: var(--vert-imperial);
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .portfolio img {
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .footer {
+      background-color: var(--gris-anthracite);
+      color: var(--blanc-pur);
+      padding: 2rem 0;
+    }
+
+    .footer .slogan {
+      color: var(--or-royal);
+      font-size: 1.3rem;
+      font-family: 'Breathing', cursive;
+    }
+
+    .footer a {
+      color: var(--blanc-pur);
+      margin: 0 10px;
+      font-size: 1.5rem;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .service-box {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .service-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-box i {
+      font-size: 2.2rem;
+      color: var(--vert-imperial);
+      margin-bottom: 10px;
+    }
+
+    .about-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    ul.list-unstyled li {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-names {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--vert-imperial);
+      margin-bottom: 15px;
+      letter-spacing: 1.2px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 2rem 0 3rem 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background-color: var(--vert-imperial);
+      color: var(--blanc-pur);
+      border-radius: 15px;
+      padding: 20px 30px;
+      min-width: 150px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+      font-size: 1.3rem;
+    }
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      font-family: 'Breathing', cursive;
+      margin-bottom: 0.3rem;
+    }
+
+    .testimonial {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 3rem;
+      color: var(--or-royal);
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-family: serif;
+    }
+    .testimonial::after {
+      content: "”";
+      font-size: 3rem;
+      color: var(--or-royal);
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      font-family: serif;
+    }
+    .testimonial .client {
+      font-weight: 700;
+      color: var(--vert-imperial);
+      margin-top: 15px;
+      text-align: right;
+      font-style: normal;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    form .form-control {
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 10px 15px;
+      font-size: 1rem;
+    }
+    form button {
+      background-color: var(--vert-imperial);
+      color: var(--blanc-pur);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    form button:hover {
+      background-color: #064429;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 60vh;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p,
+      .slogan {
+        font-size: 1rem;
+      }
+      .stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><span>Green</span><span>Event</span></a>
+      <i class="fas fa-cocktail"></i>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#apropos">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#prestations">Prestations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#realisations">Réalisations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Galerie</a></li>
+          <li class="nav-item"><a class="nav-link" href="#temoignages">Témoignages</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="accueil" class="hero">
+    <h1><span style="color:#0E3B2F">TRoP</span><span style="color:#D4AF37">HicAL</span></h1>
+    <p>Osez la fraîcheur !</p>
+    <div class="slogan">Là où vos idées prennent vie !!</div>
+  </section>
+
+  <section id="apropos" class="container mt-5">
+    <h2 class="section-title text-center">À propos</h2>
+
+    <div class="team-names text-center mb-4">
+      <p>Jean-Philippe Yobué | Sarah Kouadio | Michel Yao | Fatou N'Dri</p>
+    </div>
+
+    <p class="text-center mb-4 mx-auto" style="max-width: 900px;">
+      Green Event est une agence spécialisée dans l’organisation d’évènements uniques et frais, notamment la création de cocktails sur mesure pour tous types d’évènements. Avec un savoir-faire reconnu, notre équipe passionnée s’engage à sublimer vos moments festifs grâce à des créations originales et une ambiance chaleureuse.
+    </p>
+
+    <div class="row about-images gx-3">
+      <div class="col-md-6"><img src="https://img.freepik.com/premium-photo/barman-work-he-is-preparing-cocktails-concept-about-service-beverages_752237-1662.jpg" alt="Équipe Green Event"></div>
+      <div class="col-md-6"><img src="https://img.freepik.com/premium-photo/friends-with-cocktails-drinks-party_109285-3732.jpg" alt="Cocktails Green Event"></div>
+    </div>
+  </section>
+
+  <section id="prestations" class="container mt-5">
+    <h2 class="section-title text-center">Nos prestations</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-box">
+          <i class="fas fa-cocktail"></i>
+          <h4>Création de cocktails</h4>
+          <p>Des recettes originales et personnalisées pour tous vos événements.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-box">
+          <i class="fas fa-glass-cheers"></i>
+          <h4>Animation Bar</h4>
+          <p>Des animateurs expérimentés pour animer vos soirées avec style.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-box">
+          <i class="fas fa-truck"></i>
+          <h4>Livraison & installation</h4>
+          <p>Nous livrons et installons tout le matériel nécessaire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisations" class="container mt-5 text-center">
+  <h2 class="mb-4 fw-bold" style="color: #0E3B2F; font-family: 'Breathing', cursive; font-size: 2.5rem;">
+    Nos réalisations
+  </h2>
+
+  <ul class="list-unstyled mx-auto mb-5" style="max-width: 800px; font-size: 1.1rem; color: #2E2E2E;">
+    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Organisation de plus de <strong>150 événements réussis</strong></li>
+    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Plus de <strong>2000 clients satisfaits</strong> depuis notre création</li>
+    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Participation à des <strong>festivals et événements prestigieux</strong></li>
+    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Création de <strong>cocktails pour des marques internationales</strong></li>
+  </ul>
+
+  <div class="row justify-content-center g-4">
+    <div class="col-6 col-md-3">
+      <div class="p-4 rounded shadow" style="background-color: #D4AF37; color: white;">
+        <h3 class="display-6 fw-bold">150+</h3>
+        <p class="mb-0">Événements</p>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="p-4 rounded shadow" style="background-color: #0E3B2F; color: white;">
+        <h3 class="display-6 fw-bold">2000+</h3>
+        <p class="mb-0">Clients satisfaits</p>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="p-4 rounded shadow" style="background-color: #2E2E2E; color: white;">
+        <h3 class="display-6 fw-bold">10+</h3>
+        <p class="mb-0">Années d’expérience</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+  <section id="portfolio" class="container mt-5">
+    <h2 class="section-title text-center">Galerie</h2>
+    <div class="row g-3">
+      <div class="col-sm-6 col-md-4">
+        <img src="https://cjec.anecs-cjec.org/wp-content/uploads/sites/5/2022/11/Team-Building-Cocktail_fullevenement.jpg" alt="Cocktail coloré" class="img-fluid rounded" />
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <img src="https://th.bing.com/th/id/R.7f7d2eff2af1fcf4cf2dad5a6886c8be?rik=ttkkm89zKqcGqA&riu=http%3a%2f%2fi.huffpost.com%2fgadgets%2fslideshows%2f283671%2fslide_283671_2165559_free.jpg&ehk=DB5TA6%2fusZuWYtuN19QScnv%2bLo1DwPtBjedc1QbGBpM%3d&risl=&pid=ImgRaw&r=0" alt="Bar élégant" class="img-fluid rounded" />
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <img src="https://sophisticatedwoman.com/wp-content/uploads/2021/09/Cocktail_Feature-Image.jpg" alt="Service en soirée" class="img-fluid rounded" />
+      </div>
+    </div>
+  </section>
+
+  <section class="position-relative" style="height: 350px; overflow: hidden;">
+  <!-- Vidéo YouTube en arrière-plan -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 0;">
+    <iframe
+      src="https://www.youtube.com/embed/P2EOVODrSzs?autoplay=1&mute=1&controls=0&loop=1&playlist=P2EOVODrSzs&modestbranding=1&showinfo=0&rel=0"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      class="w-100 h-100"
+      style="pointer-events: none; object-fit: cover;"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <!-- Contenu superposé -->
+  <div class="position-absolute top-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+       style="z-index: 1; background-color: rgba(0, 0, 0, 0.5); color: white;">
+    <h3 class="text-uppercase" style="color: #D4AF37; font-family: 'Breathing', cursive;">
+      Laissez-vous tenter par nos créations !
+    </h3>
+    <p class="text-center px-4">Des cocktails frais, originaux et adaptés à chaque événement</p>
+  </div>
+</section>
+
+  <section id="temoignages" class="container mt-5">
+    <h2 class="section-title text-center">Témoignages</h2>
+    <div class="testimonial">
+      <p>Green Event a transformé notre mariage en une fête inoubliable grâce à leurs cocktails personnalisés et un service exceptionnel.</p>
+      <div class="client">- Aïcha K.</div>
+    </div>
+    <div class="testimonial">
+      <p>Très professionnels et à l’écoute, ils ont su créer une ambiance parfaite lors de notre soirée d’entreprise.</p>
+      <div class="client">- Marc T.</div>
+    </div>
+    <div class="testimonial">
+      <p>un grand merci a Green Event pour son cocktail qui à donné tout  un sens à notre cérémonie de dôte.</p>
+      <div class="client">- jacques Y.</div>
+    </div>
+  </section>
+
+  <section id="contact" class="container mt-5 text-center">
+  <h2 class="section-title">Contact</h2>
+  <p>Scannez le QR code pour nous contacter :</p>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=mailto:greeneventegmail.com" alt="QR Code de contact" class="img-fluid mb-3">
+  <p>Ou envoyez-nous un e-mail : <a href="mailto:greeneventegmail.com">greeneventegmail.com</a></p>
+</section>
+
+
+  <footer class="footer text-center">
+    <p class="slogan">Green Event - Là où vos idées prennent vie !!</p>
+    <p>Contact : +225 07 89 65 43 21 | greenevent@exemple.com</p>
+    <div>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Formulaire simple avec alert
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const message = this.message.value.trim();
+
+      if(!name || !email || !message) {
+        alert('Merci de remplir tous les champs.');
+        return;
+      }
+
+      alert(`Merci ${name}, votre message a bien été envoyé !`);
+      this.reset();
+    });
+  </script>
+  
+</body>
+</html>
